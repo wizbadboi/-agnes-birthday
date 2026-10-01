@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agnes' Birthday 🎂</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #ff758c, #ff7eb3);
+    color: white;
+    text-align: center;
+    overflow-x: hidden;
+}
+
+.hidden {
+    display: none;
+}
+
+#opening {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 25px;
+}
+
+.open-card {
+    max-width: 500px;
+}
+
+.gift {
+    font-size: 90px;
+    animation: bounce 1.5s infinite;
+    cursor: pointer;
+    user-select: none;
+}
+
+.open-card h1 {
+    font-size: 38px;
+}
+
+.open-card p {
+    font-size: 19px;
+    line-height: 1.6;
+}
+
+.open-btn {
+    border: none;
+    padding: 16px 30px;
+    border-radius: 50px;
+    background: white;
+    color: #ff4f81;
+    font-size: 19px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+}
+
+.open-btn:active {
+    transform: scale(0.95);
+}
+
+#birthday {
+    padding: 25px 18px;
+}
+
+.container {
+    width: 100%;
+    max-width: 700px;
+    margin: auto;
+}
+
+h1 {
+    font-size: 42px;
+}
+
+.subtitle {
+    font-size: 20px;
+    margin-bottom: 25px;
+}
+
+.photo {
+    width: 90%;
+    max-width: 350px;
+    border-radius: 25px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.message {
+    background: rgba(255,255,255,0.18);
+    padding: 25px;
+    border-radius: 22px;
+    margin: 30px 0;
+    line-height: 1.7;
+    font-size: 18px;
+}
+
+.tease {
+    font-size: 21px;
+    font-weight: bold;
+}
+
+video {
+    width: 100%;
+    border-radius: 18px;
+    margin: 15px 0;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+}
+
+.memories {
+    margin-top: 40px;
+}
+
+footer {
+    margin: 45px 0 20px;
+}
+
+.heart {
+    position: fixed;
+    bottom: -30px;
+    font-size: 25px;
+    pointer-events: none;
+    animation: float 6s linear forwards;
+    z-index: 10;
+}
+
+@keyframes float {
+    from {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+
+    to {
+        transform: translateY(-110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-15px) rotate(-5deg);
+    }
+}
+
+.celebration {
+    position: fixed;
+    left: 50%;
+    top: 45%;
+    pointer-events: none;
+    z-index: 9999;
+    font-size: 25px;
+}
+</style>
+</head>
+
+<body>
+
+<section id="opening">
+
+    <div class="open-card">
+
+        <div class="gift">🎁</div>
+
+        <h1>HEY AGNES...</h1>
+
+        <p>Yes, <strong>YOU</strong>. 😂</p>
+
+        <p>
+            The family's official last-born
+            and certified troublemaker. 😭❤️
+        </p>
+
+        <p>
+            Someone made a little surprise for you...
+        </p>
+
+        <button class="open-btn" onclick="openBirthday()">
+            Tap to open 💖
+        </button>
+
+    </div>
+
+</section>
+
+
+<section id="birthday" class="hidden">
+
+<div class="container">
+
+    <h1>🎂 Happy Birthday, Agnes! 🎉</h1>
+
+    <div class="subtitle">
+        To our beautiful last-born troublemaker ❤️😂
+    </div>
+
+    <img
+        src="IMG-20261002-WA0001.jpg"
+        class="photo"
+        alt="Agnes"
+    >
+
+    <div class="message">
+
+        <p class="tease">
+            Agnes Kusi Saka Appiah ❤️
+        </p>
+
+        <p>
+            Happy Birthday to the last-born of the family! 🎂
+        </p>
+
+        <p>
+            You may be troublesome sometimes...
+            okay, maybe <strong>VERY</strong> troublesome 😂,
+            but you're also one of the people who brings
+            laughter, energy and happiness into the family.
+        </p>
+
+        <p>
+            Never stop smiling. Never stop dreaming.
+            Keep growing, keep learning and keep becoming
+            the amazing person you're meant to be. ✨
+        </p>
+
+        <p>
+            May this new year of your life bring you
+            happiness, success, good health and plenty
+            of beautiful memories.
+        </p>
+
+        <p>
+            And please... try to give everyone a little
+            peace this year. 😂😂
+        </p>
+
+        <p>
+            <strong>
+                Happy Birthday, little sis! ❤️🎂
+            </strong>
+        </p>
+
+    </div>
+
+
+    <div class="memories">
+
+        <h2>🎬 Your Little Memory Lane</h2>
+
+        <p>
+            Because one photo wasn't enough. 😂❤️
+        </p>
+
+        <video controls playsinline preload="metadata">
+            <source src="VID-20261002-WA0002(2).mp4" type="video/mp4">
+        </video>
+
+        <video controls playsinline preload="metadata">
+            <source src="VID-20261002-WA0003.mp4" type="video/mp4">
+        </video>
+
+        <video controls playsinline preload="metadata">
+            <source src="VID-20261002-WA0004.mp4" type="video/mp4">
+        </video>
+
+    </div>
+
+
+    <footer>
+        Made with ❤️ by your big brother
+        <br><br>
+        🎂 Happy Birthday, Agnes! 🎂
+    </footer>
+
+</div>
+
+</section>
+
+
+<script>
+
+function openBirthday() {
+
+    document.getElementById("opening").style.display = "none";
+
+    document.getElementById("birthday").classList.remove("hidden");
+
+    launchConfetti();
+
+    for (let i = 0; i < 40; i++) {
+        setTimeout(createHeart, i * 60);
+    }
+}
+
+
+function launchConfetti() {
+
+    const emojis = [
+        "🎉",
+        "🎊",
+        "✨",
+        "💖",
+        "❤️",
+        "🎂",
+        "🥳",
+        "🎈"
+    ];
+
+    for (let i = 0; i < 70; i++) {
+
+        const piece = document.createElement("div");
+
+        piece.className = "celebration";
+
+        piece.innerHTML =
+            emojis[Math.floor(Math.random() * emojis.length)];
+
+        const angle = Math.random() * Math.PI * 2;
+        const distance = 150 + Math.random() * 400;
+
+        const x = Math.cos(angle) * distance;
+        const y = Math.sin(angle) * distance;
+
+        piece.animate(
+            [
+                {
+                    transform: "translate(-50%, -50%) scale(0)",
+                    opacity: 1
+                },
+                {
+                    transform:
+                        `translate(calc(-50% + ${x}px), calc(-50% + ${y}px)) scale(1.4)`,
+                    opacity: 0
+                }
+            ],
+            {
+                duration: 1800 + Math.random() * 1200,
+                easing: "cubic-bezier(.2,.8,.3,1)"
+            }
+        );
+
+        document.body.appendChild(piece);
+
+        setTimeout(() => {
+            piece.remove();
+        }, 3200);
+    }
+}
+
+
+function createHeart() {
+
+    const heart = document.createElement("div");
+
+    heart.className = "heart";
+
+    heart.innerHTML =
+        Math.random() > 0.5 ? "❤️" : "💖";
+
+    heart.style.left =
+        Math.random() * 100 + "vw";
+
+    heart.style.animationDuration =
+        (4 + Math.random() * 4) + "s";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 8000);
+}
+
+
+setInterval(createHeart, 900);
+
+</script>
+
+</body>
+</html>
