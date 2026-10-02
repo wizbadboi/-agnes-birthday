@@ -123,6 +123,45 @@ footer {
     margin: 45px 0 20px;
 }
 
+.wishes {
+    background: rgba(255,255,255,0.18);
+    padding: 25px;
+    border-radius: 22px;
+    margin: 40px 0;
+}
+
+.wishes input,
+.wishes textarea {
+    width: 100%;
+    margin: 8px 0;
+    padding: 14px;
+    border: none;
+    border-radius: 14px;
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+}
+
+.wishes textarea {
+    resize: vertical;
+}
+
+.wish {
+    background: rgba(255,255,255,0.16);
+    padding: 15px;
+    border-radius: 15px;
+    margin-top: 15px;
+    text-align: left;
+}
+
+.wish strong {
+    font-size: 17px;
+}
+
+#wishStatus {
+    margin-top: 15px;
+    font-weight: bold;
+}
+
 .heart {
     position: fixed;
     bottom: -30px;
@@ -277,6 +316,22 @@ footer {
     </div>
 
 
+    <div class="wishes">
+        <h2>💌 Birthday Wishes</h2>
+
+        <p>Leave Agnes a little birthday message! ❤️</p>
+
+        <input id="wishName" type="text" maxlength="50" placeholder="Your name">
+        <textarea id="wishMessage" maxlength="500" placeholder="Write your birthday wish..." rows="4"></textarea>
+
+        <button class="open-btn" onclick="sendWish()">
+            Send Wish 💖
+        </button>
+
+        <div id="wishStatus"></div>
+        <div id="wishList"></div>
+    </div>
+
     <footer>
         Made with ❤️ by your big brother
         <br><br>
@@ -384,7 +439,90 @@ function createHeart() {
 
 setInterval(createHeart, 900);
 
+const SUPABASE_URL = "https://iykucqqxfublglzpokgz.supabase.co";
+const SUPABASE_KEY = "sb_publishable_dCpsFoF_LJxwVlX2R9xmFQ_QgItXIzt";
+
+async function loadWishes() {
+    const list = document.getElementById("wishList");
+
+    try {
+        const response = await fetch(
+            SUPABASE_URL + "/rest/v1/birthday_wishes?select=*&order=created_at.desc",
+            {
+                headers: {
+                    "apikey": SUPABASE_KEY,
+                    "Authorization": "Bearer " + SUPABASE_KEY
+                }
+            }
+        );
+
+        if (!response.ok) throw new Error("Could not load wishes");
+
+        const wishes = await response.json();
+
+        list.innerHTML = wishes.map(wish => `
+            <div class="wish">
+                <strong>❤️ ${escapeHtml(wish.name)}</strong>
+                <p>${escapeHtml(wish.message)}</p>
+            </div>
+        `).join("");
+
+    } catch (error) {
+        list.innerHTML = "<p>Wishes will appear here soon ❤️</p>";
+    }
+}
+
+async function sendWish() {
+    const name = document.getElementById("wishName").value.trim();
+    const message = document.getElementById("wishMessage").value.trim();
+    const status = document.getElementById("wishStatus");
+
+    if (!name || !message) {
+        status.textContent = "Please enter your name and a wish ❤️";
+        return;
+    }
+
+    status.textContent = "Sending... 💌";
+
+    try {
+        const response = await fetch(
+            SUPABASE_URL + "/rest/v1/birthday_wishes",
+            {
+                method: "POST",
+                headers: {
+                    "apikey": SUPABASE_KEY,
+                    "Authorization": "Bearer " + SUPABASE_KEY,
+                    "Content-Type": "application/json",
+                    "Prefer": "return=minimal"
+                },
+                body: JSON.stringify({ name, message })
+            }
+        );
+
+        if (!response.ok) {
+            throw new Error("Could not send wish");
+        }
+
+        document.getElementById("wishName").value = "";
+        document.getElementById("wishMessage").value = "";
+        status.textContent = "Wish sent! 🎉❤️";
+
+        loadWishes();
+
+    } catch (error) {
+        status.textContent = "Something went wrong. Please try again.";
+    }
+}
+
+function escapeHtml(text) {
+    const div = document.createElement("div");
+    div.textContent = text;
+    return div.innerHTML;
+}
+
 </script>
 
 </body>
 </html>
+
+<script>loadWishes();</script>
